@@ -31,27 +31,13 @@ ul,
 ol {
   list-style: none;
 }
-
-@media (max-width: @screen-xs) {
-  .ant-table {
-    width: 100%;
-    overflow-x: auto;
-    &-thead > tr,
-    &-tbody > tr {
-      > th,
-      > td {
-        white-space: pre;
-        > span {
-          display: block;
-        }
-      }
-    }
-  }
+.ant-btn-primary {
+  background-color: pink;
+  border-color: rgb(248, 151, 183);
 }
 
-// Compatible with IE11
-@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
-  body .ant-design-pro > .ant-layout {
-    min-height: 100vh;
-  }
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: rgb(248, 147, 164);
+  border-color: rgb(248, 151, 183);
 }
