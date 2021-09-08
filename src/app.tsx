@@ -4,10 +4,7 @@ import { message } from 'antd';
 import type { RunTimeLayoutConfig } from 'umi';
 import { FormattedMessage, history } from 'umi';
 import logoPng from '../public/icons/logo.png';
-import { useUserInfo } from './hooks';
-import { IUserInfo } from './pages/user/Login/typing';
 import { MS_LOGIN_TOKEN } from './utils/constant';
-import request from './utils/request';
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
 export const initialStateConfig = {
@@ -32,7 +29,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }: any) => {
     onPageChange: (value: any) => {
       console.log(value);
       const { pathname } = value;
-      const loginPath = '/';
+      const loginPath = '/login';
       // 如果没有登录，重定向到 login
       //!简单判断，如果没有获取到用户名，重新登录
       const getToken = window.localStorage.getItem(MS_LOGIN_TOKEN);
