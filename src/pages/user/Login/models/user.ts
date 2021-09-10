@@ -36,7 +36,7 @@ const User: IUserModel = {
           }
         })
       }
-      callback && callback()
+      callback && callback(response)
 
     }
   },

@@ -1,18 +1,18 @@
 import { useUserInfo } from '@/hooks';
 import { MS_LOGIN_TOKEN } from '@/utils/constant';
-import { Button, Space } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Space } from 'antd';
 import React from 'react';
-import styles from './index.less';
 
-export type SiderTheme = 'light' | 'dark';
+interface IProps {}
 
-const GlobalHeaderRight: React.FC = () => {
+const RightContent: React.FC<IProps> = (props) => {
   const { username } = useUserInfo();
   return (
-    <Space className={styles.right}>
-      <span>头像</span>
+    <Space>
+      <Avatar style={{ backgroundColor: 'rgb(248, 114, 136)' }} icon={<UserOutlined />} />
 
-      <span>用户名：{username}</span>
+      <span>{username}</span>
       <Button
         type="primary"
         onClick={() => {
@@ -25,4 +25,5 @@ const GlobalHeaderRight: React.FC = () => {
     </Space>
   );
 };
-export default GlobalHeaderRight;
+
+export default RightContent;

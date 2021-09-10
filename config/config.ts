@@ -14,10 +14,11 @@ export default defineConfig({
     hmr: true,
   },
   layout: {
-    // https://umijs.org/zh-CN/plugins/plugin-layout
+    name: 'my-project',
     locale: true,
-    siderWidth: 208,
-    ...defaultSettings,
+    layout: 'mix',
+    splitMenus:true,
+    defaultOpenAll:true
   },
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {

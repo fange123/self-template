@@ -1,4 +1,4 @@
-﻿export interface IRoute {
+﻿export interface IBestAFSRoute {
   path?: string,
     component?: string,
     name?: string, // 兼容此写法
@@ -19,43 +19,86 @@
     // 权限配置，需要与 plugin-access 插件配合使用
     access?: string,
     // 隐藏子菜单
-    hideChildrenInMenu?: true,
+    hideChildrenInMenu?: boolean,
     // 隐藏自己和子菜单
-    hideInMenu?: true,
+    hideInMenu?: boolean,
     // 在面包屑中隐藏
-    hideInBreadcrumb?: true,
+    hideInBreadcrumb?: boolean,
     // 子项往上提，仍旧展示,
     flatMenu?: boolean,
-    layout?:boolean
-    routes?: IRoute[]
-    redirect?:string
+    children?:IBestAFSRoute[],
+    routes?:IBestAFSRoute[],
+    layout?:boolean,
+    redirect?:string,
+    splitMenus?:true,
+
+
 
 }
 
-const routes: IRoute[] = [
-  {
+const routes: IBestAFSRoute[] = [
+   //登录页面单独布局
+   {
     path: '/login',
     layout: false,
-    name: 'login',
+    hideInMenu:true,
     component: './user/Login',
+    name:'登录'
 
   },
-  {
+    {
     path: '/',
-    layout: false,
     component: '../layouts/BasicLayout',
+    layout:false,
+    routes: [
+      {
+        path: '/',
+        redirect: '/home'
+      },
+       {
+      path:'/home',
+      name:'首页',
+      component:'./home',
+    },
+     {
+    path:'/list',
+    name:'列表',
+    component:'./list',
+  },
+  {
+    path:'/my',
+    name:'个人简介',
     routes:[
-      {path:'/home',
-    name:'home',
-    component:'./home'
-    }
+      {
+        path:'/my',
+        redirect:'/my/list'
+      },
+      {
+        path:'/my/list',
+        component:'./my/list',
+        name:'个人列表'
+      },
+      {
+        path:'/my/account',
+        component:'./my/account',
+        name:'个人账户'
+      }
+    ]
+  },
+
+   {
+    path: '/',
+    redirect: '/home',
+  },
+  {
+    component: './404',
+  },
+
     ]
   },
 
 
-  {
-    component: './404',
-  },
+
 ];
 
 export default routes
