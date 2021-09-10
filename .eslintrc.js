@@ -8,7 +8,17 @@ module.exports = {
   rules: {
     '@typescript-eslint/prefer-optional-chain': 'off',
     'react/jsx-no-useless-fragment': 'off',
-    '@typescript-eslint/interface-name-prefix': ['error', { prefixWithI: 'always' }],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'interface',
+        format: ['PascalCase'],
+        custom: {
+          regex: '^I[A-Z]',
+          match: true,
+        },
+      },
+    ],
     '@typescript-eslint/consistent-type-assertions': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
@@ -18,6 +28,5 @@ module.exports = {
       'WithStatement',
       "BinaryExpression[operator='in']",
     ],
-    '@typescript-eslint/interface-name-prefix': ['always'],
   },
 };

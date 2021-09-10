@@ -1,16 +1,19 @@
-import {
+import type {
   MenuDataItem,
   BasicLayoutProps as ProLayoutProps,
   Settings,
-  PageContainer,
 } from '@ant-design/pro-layout';
+import { PageContainer } from '@ant-design/pro-layout';
 import ProLayout from '@ant-design/pro-layout';
 import React from 'react';
 import { Link } from 'umi';
 import logoPng from '@/assets/images/logo.png';
-import { Button } from 'antd';
-import classnames from 'classnames';
 import styles from './index.less';
+import { useUserInfo } from '@/hooks';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import type { IConnectProps } from '@/models/connect';
+import { MyConfirm } from '@/components';
+// import MyIcon from '@/components/MyIcon';
 
 export type BasicLayoutProps = {
   breadcrumbNameMap: Record<string, MenuDataItem>;
@@ -25,7 +28,7 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
 };
 
 const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] => {
-  //深拷贝一个数组
+  // 深拷贝一个数组
   const newList = JSON.parse(JSON.stringify(menuList));
 
   return newList.map((item: { children: MenuDataItem[] }) => {
@@ -35,30 +38,54 @@ const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] => {
     };
   });
 };
+interface IProps
+  extends BasicLayoutProps,
+    Omit<IConnectProps, 'history' | 'loading' | 'route' | 'location'> {}
+//! 解决类型不兼容
 
-const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
+const BasicLayout: React.FC<IProps> = (props) => {
   const {
     children,
+    dispatch,
     location = {
       pathname: '/',
     },
   } = props;
+  const { username } = useUserInfo();
+
+  const onOk = () => {
+    dispatch({
+      type: 'user/logout',
+    });
+  };
+  // const svgProps = {
+  //   width: '15px',
+  //   height: '15px',
+  // };
+
   const layout = 'horizontal';
-  //prolayout.ant.design/getting-started#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80
+  // prolayout.ant.design/getting-started#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80
   //   headerRender 可以自定义顶栏
   const headerRender = () => {
     return (
-      <header className={classnames(styles.inline_header)}>
+      <header className={styles.header_line}>
         <div className={styles.left}>
           <Link to="/" className={styles.logo_wrapper}>
-            logo
+            <img src={logoPng} alt="logo" />
           </Link>
+          <h3 className={styles.title}>张大宝的鱼塘</h3>
         </div>
         <div className={styles.right}>
-          <Link to="/userInfo">
-            <span className={styles.admin}>aaaa</span>
-          </Link>
-          icon
+          <span className={styles.username}>{username}</span>
+
+          <MyConfirm
+            icon={<ExclamationCircleOutlined />}
+            title="提示"
+            content="确认退出登陆吗？"
+            onOk={onOk}
+          >
+            {/* <Icon title="退出登录" component={OutSvg} /> */}
+          </MyConfirm>
         </div>
       </header>
     );
@@ -68,10 +95,12 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   // menuHeaderRender 自定义的菜单头区域
   // menuExtraRender 可以为菜单增加一个额外内容，在菜单头和菜单之间
 
-  https: return layout === 'horizontal' ? (
-    <ProLayout layout="top" headerRender={() => headerRender()}>
-      <PageContainer>{children}</PageContainer>
-    </ProLayout>
+  return layout === 'horizontal' ? (
+    <div className={styles.horizontal}>
+      <ProLayout layout="top" headerRender={() => headerRender()} fixedHeader>
+        <PageContainer>{children}</PageContainer>
+      </ProLayout>
+    </div>
   ) : (
     <ProLayout
       {...props}

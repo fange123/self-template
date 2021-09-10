@@ -17,8 +17,8 @@ export default defineConfig({
     name: 'my-project',
     locale: true,
     layout: 'mix',
-    splitMenus:true,
-    defaultOpenAll:true
+    splitMenus: true,
+    defaultOpenAll: true,
   },
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
@@ -54,6 +54,7 @@ export default defineConfig({
 
   nodeModulesTransform: { type: 'none' },
   mfsu: {},
+
   webpack5: {},
   exportStatic: {},
 });
