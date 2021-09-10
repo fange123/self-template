@@ -10,10 +10,11 @@ import { Link } from 'umi';
 import logoPng from '@/assets/images/logo.png';
 import styles from './index.less';
 import { useUserInfo } from '@/hooks';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import Icon, { ExclamationCircleOutlined } from '@ant-design/icons';
 import type { IConnectProps } from '@/models/connect';
 import { MyConfirm } from '@/components';
-// import MyIcon from '@/components/MyIcon';
+import { ReactComponent as outSvg } from '@/assets/icons/out.svg';
+import MyIcon from '@/components/MyIcon';
 
 export type BasicLayoutProps = {
   breadcrumbNameMap: Record<string, MenuDataItem>;
@@ -58,10 +59,10 @@ const BasicLayout: React.FC<IProps> = (props) => {
       type: 'user/logout',
     });
   };
-  // const svgProps = {
-  //   width: '15px',
-  //   height: '15px',
-  // };
+  const svgProps = {
+    width: '15px',
+    height: '15px',
+  };
 
   const layout = 'horizontal';
   // prolayout.ant.design/getting-started#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80
@@ -84,7 +85,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
             content="确认退出登陆吗？"
             onOk={onOk}
           >
-            {/* <Icon title="退出登录" component={OutSvg} /> */}
+            <Icon title="退出登录" component={MyIcon(outSvg, svgProps)} />
           </MyConfirm>
         </div>
       </header>
