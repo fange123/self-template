@@ -73,6 +73,7 @@ if (pwa) {
       onClose: async () => null,
     });
   });
+  // eslint-disable-next-line no-restricted-syntax
 } else if ('serviceWorker' in navigator && isHttps) {
   // unregister service worker
   const { serviceWorker } = navigator;

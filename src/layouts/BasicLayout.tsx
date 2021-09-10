@@ -15,6 +15,7 @@ import type { IConnectProps } from '@/models/connect';
 import { MyConfirm } from '@/components';
 import { ReactComponent as outSvg } from '@/assets/icons/out.svg';
 import MyIcon from '@/components/MyIcon';
+import { MS_LOGIN_TOKEN } from '@/utils/constant';
 
 export type BasicLayoutProps = {
   breadcrumbNameMap: Record<string, MenuDataItem>;
@@ -47,7 +48,6 @@ interface IProps
 const BasicLayout: React.FC<IProps> = (props) => {
   const {
     children,
-    dispatch,
     location = {
       pathname: '/',
     },
@@ -55,9 +55,9 @@ const BasicLayout: React.FC<IProps> = (props) => {
   const { username } = useUserInfo();
 
   const onOk = () => {
-    dispatch({
-      type: 'user/logout',
-    });
+    //! 可以写请求
+    window.localStorage.removeItem(MS_LOGIN_TOKEN);
+    window.location.reload();
   };
   const svgProps = {
     width: '15px',
@@ -98,8 +98,8 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
   return layout === 'horizontal' ? (
     <div className={styles.horizontal}>
-      <ProLayout layout="top" headerRender={() => headerRender()} fixedHeader>
-        <PageContainer>{children}</PageContainer>
+      <ProLayout layout="top" headerRender={() => headerRender()} fixedHeader footerRender={false}>
+        {children}
       </ProLayout>
     </div>
   ) : (
