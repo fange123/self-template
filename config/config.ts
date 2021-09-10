@@ -57,14 +57,4 @@ export default defineConfig({
 
   webpack5: {},
   exportStatic: {},
-  chainWebpack(config) {
-  // 一个🌰:对svg的优雅处理
-  config.module
-      .rule("svgIcon")
-      .test(/\.svg$/)
-      .use('@svgr/webpack')
-      .loader('babel-loader')
-      .loader(require.resolve('@svgr/webpack'))
-
-}
 });

@@ -9,7 +9,6 @@ const Home: React.FC<IProps> = () => {
   return (
     <div className={classNames('page_container', styles.home)}>
       <MyTitle title="首页home" haveBack />
-      home
     </div>
   );
 };

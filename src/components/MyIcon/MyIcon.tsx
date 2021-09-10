@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
+import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
 
 const defaultProps = {
   width: '20px',
@@ -14,6 +14,7 @@ const MyIcon = (
   newProps?: Partial<CustomIconComponentProps>,
 ): React.ComponentType<any> => {
   class WrappingComponent extends React.Component {
+    // eslint-disable-next-line no-restricted-syntax
     render() {
       return <WrappedComponent {...this.props} {...defaultProps} {...newProps} />;
     }

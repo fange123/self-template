@@ -49,7 +49,7 @@ ol {
 .ant-layout-header {
   height: 50px !important;
   padding: 0 20px !important;
-  background: rgb(252, 203, 211);
+  background: rgb(252, 203, 211) !important;
 }
 
 //页面
@@ -62,4 +62,19 @@ ol {
 .ant-pro-basicLayout-content {
   margin: 0 !important;
   padding: 20px 20px 0 20px;
+}
+.sider {
+  height: 50px !important;
+  line-height: 50px !important;
+  background: transparent;
+}
+.header_line {
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  &:global(.ant-layout-header) {
+    height: 56px;
+    line-height: 56px;
+  }
 }
