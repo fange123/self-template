@@ -34,7 +34,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
   const { children } = props;
 
   //! 可选水平，垂直，内敛
-  const layout = 'vertical';
+  const layout = 'horizontal';
 
   return layout === 'horizontal' ? (
     <Layout className={styles.horizontal_layout}>

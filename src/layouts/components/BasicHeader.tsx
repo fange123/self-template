@@ -3,7 +3,7 @@ import MyIcon from '@/components/MyIcon';
 import Icon, { ExclamationCircleOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Link } from 'umi';
-import styles from './BasicHeader.less';
+import styles from './styles//BasicHeader.less';
 import { ReactComponent as outSvg } from '@/assets/icons/out.svg';
 import logoPng from '@/assets/images/logo.png';
 import { useUserInfo } from '@/hooks';

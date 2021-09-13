@@ -10,7 +10,7 @@ import { ReactComponent as listSvg } from '@/assets/icons/list.svg';
 import { ReactComponent as listActiveSvg } from '@/assets/icons/list_a.svg';
 import { ReactComponent as selfSvg } from '@/assets/icons/self.svg';
 import { ReactComponent as selfActiveSvg } from '@/assets/icons/self_a.svg';
-import styles from './BasicSider.less';
+import styles from './styles//BasicSider.less';
 import Icon from '@ant-design/icons';
 import classnames from 'classnames';
 import Sider from 'antd/lib/layout/Sider';

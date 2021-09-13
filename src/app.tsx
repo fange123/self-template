@@ -28,7 +28,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }: any) => {
       const { pathname } = value;
       const loginPath = '/login';
       // 如果没有登录，重定向到 login
-      //!简单判断，如果没有获取到用户名，重新登录
+      //! 简单判断，如果没有获取到用户名，重新登录
       const getToken = window.localStorage.getItem(MS_LOGIN_TOKEN);
       if (!getToken && pathname !== loginPath) {
         history.push(loginPath);

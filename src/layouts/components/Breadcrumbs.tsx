@@ -3,7 +3,7 @@ import type { Route } from 'antd/lib/breadcrumb/Breadcrumb';
 import { Link } from 'umi';
 import type { IBestAFSRoute } from '../../../config/routes';
 import menuRoutesData from '../../../config/routes';
-import styles from './Breadcrumbs.less';
+import styles from './styles/Breadcrumbs.less';
 
 const itemRender = (route: Route, _params: any, routes: Route[], paths: string[]) => {
   const last = routes.indexOf(route) === routes.length - 1;
