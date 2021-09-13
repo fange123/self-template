@@ -13,6 +13,7 @@ import { ReactComponent as selfActiveSvg } from '@/assets/icons/self_a.svg';
 import styles from './BasicSider.less';
 import Icon from '@ant-design/icons';
 import classnames from 'classnames';
+import Sider from 'antd/lib/layout/Sider';
 
 interface IProps {
   collapsed?: boolean;
@@ -76,7 +77,7 @@ const BasicSider: React.FC<IProps> = (props) => {
       if (routes) {
         return (
           <SubMenu
-            key={path}
+            key={path?.replace('/', '')}
             title={
               <Link to={path!} replace={window.location.pathname === path}>
                 <Icon component={icon} />
@@ -101,7 +102,7 @@ const BasicSider: React.FC<IProps> = (props) => {
       }
 
       return (
-        <Item key={path} className={menuClass}>
+        <Item key={path?.replace('/', '')} className={menuClass}>
           <Link to={path!} replace={window.location.pathname === path}>
             <Icon component={icon} />
             <span>{t}</span>
@@ -120,7 +121,7 @@ const BasicSider: React.FC<IProps> = (props) => {
     }
   };
 
-  return (
+  const menuSider = (
     <Menu
       mode={mode === 'vertical' ? 'inline' : 'horizontal'}
       theme="light"
@@ -132,6 +133,18 @@ const BasicSider: React.FC<IProps> = (props) => {
     >
       {getMenuItems(pathname)}
     </Menu>
+  );
+
+  return (
+    <>
+      {mode === 'vertical' ? (
+        <Sider width={160} collapsedWidth={60} collapsed={false} className={styles.sider}>
+          {menuSider}
+        </Sider>
+      ) : (
+        menuSider
+      )}
+    </>
   );
 };
 

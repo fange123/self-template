@@ -7,9 +7,13 @@ interface IProps {}
 
 const Home: React.FC<IProps> = () => {
   return (
-    <div className={classNames('page_container', styles.home)}>
-      <MyTitle title="首页home" haveBack />
-    </div>
+    <>
+      <div className={classNames('page_container', styles.home)}>
+        <MyTitle title="首页home" haveBack />
+        <div>555</div>
+      </div>
+      <div>3344</div>
+    </>
   );
 };
 
