@@ -72,10 +72,13 @@ const routes: IBestAFSRoute[] = [
         path: '/list',
         name: '列表',
         component: './list',
+        active: 'list',
       },
       {
         path: '/my',
         name: '个人简介',
+        active: 'my',
+
         routes: [
           {
             path: '/my',

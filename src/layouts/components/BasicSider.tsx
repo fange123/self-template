@@ -4,8 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'umi';
 import type { IBestAFSRoute } from '../../../config/routes';
 import menuRoutesData from '../../../config/routes';
-import { ReactComponent as homeSvg } from '@/assets/icons/yu_b.svg';
-import { ReactComponent as homeActiveSvg } from '@/assets/icons/yu_y.svg';
+import { ReactComponent as homeSvg } from '@/assets/icons/home.svg';
+import { ReactComponent as homeActiveSvg } from '@/assets/icons/home_a.svg';
+import { ReactComponent as listSvg } from '@/assets/icons/list.svg';
+import { ReactComponent as listActiveSvg } from '@/assets/icons/list_a.svg';
+import { ReactComponent as selfSvg } from '@/assets/icons/self.svg';
+import { ReactComponent as selfActiveSvg } from '@/assets/icons/self_a.svg';
 import styles from './BasicSider.less';
 import Icon from '@ant-design/icons';
 import classnames from 'classnames';
@@ -20,6 +24,10 @@ interface IProps {
 const mapNameToIcon: Record<string, any> = {
   home: homeSvg,
   home_active: homeActiveSvg,
+  list: listSvg,
+  list_active: listActiveSvg,
+  my: selfSvg,
+  my_active: selfActiveSvg,
 };
 
 const getCurrentActiveMenuItemKey = (pathname: string) => {
@@ -65,7 +73,6 @@ const BasicSider: React.FC<IProps> = (props) => {
         width: '18px',
         height: '18px',
       });
-
       if (routes) {
         return (
           <SubMenu
@@ -94,7 +101,7 @@ const BasicSider: React.FC<IProps> = (props) => {
       }
 
       return (
-        <Item key={path}>
+        <Item key={path} className={menuClass}>
           <Link to={path!} replace={window.location.pathname === path}>
             <Icon component={icon} />
             <span>{t}</span>
