@@ -66,18 +66,21 @@ const routes: IBestAFSRoute[] = [
         path: '/home',
         name: '首页',
         component: './home',
+        breadcrumb: '/home',
         active: 'home',
       },
       {
         path: '/list',
         name: '列表',
         component: './list',
+        breadcrumb: '/list',
         active: 'list',
       },
       {
         path: '/my',
         name: '个人简介',
         active: 'my',
+        breadcrumb: '/my',
 
         routes: [
           {
@@ -87,11 +90,13 @@ const routes: IBestAFSRoute[] = [
           {
             path: '/my/list',
             component: './my/list',
+            breadcrumb: '/list',
             name: '个人列表',
           },
           {
             path: '/my/account',
             component: './my/account',
+            breadcrumb: '/account',
             name: '个人账户',
           },
         ],

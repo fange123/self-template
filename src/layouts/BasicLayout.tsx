@@ -11,6 +11,7 @@ import styles from './index.less';
 import { Layout } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import BasicSider from './components/BasicSider';
+import Breadcrumbs from './components/Breadcrumbs';
 
 export type BasicLayoutProps = {
   breadcrumbNameMap: Record<string, MenuDataItem>;
@@ -24,14 +25,6 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
   breadcrumbNameMap: Record<string, MenuDataItem>;
 };
 
-// const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] => {
-//   return menuList.map((item) => {
-//     return {
-//       ...item,
-//       children: item.children ? menuDataRender(item.children) : undefined,
-//     };
-//   });
-// };
 interface IProps
   extends BasicLayoutProps,
     Omit<IConnectProps, 'history' | 'loading' | 'route' | 'location'> {}
@@ -47,7 +40,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
     <Layout className={styles.horizontal_layout}>
       <BasicHeader mode={layout} />
       <Content className={styles.horizontal_content}>
-        {/* <Breadcrumbs /> */}
+        <Breadcrumbs />
         <div className={styles.horizontal_main}>{children}</div>
       </Content>
     </Layout>
@@ -57,7 +50,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
       <Layout>
         <BasicSider mode={layout} pathname={window.location.pathname} />
         <Layout className={styles.main_container_wrapper} style={{ marginLeft: '160px' }}>
-          {/* <Breadcrumbs /> */}
+          <Breadcrumbs />
           <div className={styles.main_container}>{children}</div>
         </Layout>
       </Layout>
