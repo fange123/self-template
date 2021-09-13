@@ -42,7 +42,7 @@ const getRouteFather = (pathname_: string) => pathname_.split('/')[1];
 const rootSubmenuKeys = menuRoutesData.map((menu) => menu.active).filter(Boolean);
 
 const BasicSider: React.FC<IProps> = (props) => {
-  const { pathname } = props;
+  const { pathname, mode } = props;
 
   const [openKeys, setOpenKeys] = useState<string[]>([getRouteFather(pathname)]);
   const [currentMenu, setCurrentMenu] = useState<string[]>([getCurrentActiveMenuItemKey(pathname)]);
@@ -122,12 +122,13 @@ const BasicSider: React.FC<IProps> = (props) => {
 
   return (
     <Menu
-      mode="horizontal"
-      className={classnames(styles.headerMenu, 'sider')}
+      mode={mode === 'vertical' ? 'inline' : 'horizontal'}
+      theme="light"
       inlineIndent={20}
       openKeys={openKeys}
       selectedKeys={currentMenu}
       onOpenChange={handleOpenChange}
+      className={classnames({ [styles.headerMenu]: mode === 'horizontal' })}
     >
       {getMenuItems(pathname)}
     </Menu>

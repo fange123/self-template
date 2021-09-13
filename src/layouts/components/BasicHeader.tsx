@@ -10,11 +10,16 @@ import { useUserInfo } from '@/hooks';
 import { MS_LOGIN_TOKEN } from '@/utils/constant';
 import { Header } from 'antd/lib/layout/layout';
 import BasicSider from './BasicSider';
+import classnames from 'classnames';
 
-interface IProps {}
+interface IProps {
+  mode?: 'inline' | 'horizontal' | 'vertical';
+}
 
-const BasicHeader: React.FC<IProps> = () => {
+const BasicHeader: React.FC<IProps> = (props) => {
   const { username } = useUserInfo();
+
+  const { mode } = props;
 
   const svgProps = {
     width: '15px',
@@ -28,13 +33,15 @@ const BasicHeader: React.FC<IProps> = () => {
   };
 
   return (
-    <Header className="header_line">
+    <Header
+      className={classnames(mode === 'inline' ? styles.inline_header : styles.horizontal_header)}
+    >
       <div className={styles.left}>
         <Link to="/" className={styles.logo_wrapper}>
           <img src={logoPng} alt="logo" />
         </Link>
         <h3 className={styles.title}>张大宝的鱼塘</h3>
-        <BasicSider pathname={window.location.pathname} />
+        <BasicSider pathname={window.location.pathname} mode={mode} />
       </div>
       <div className={styles.right}>
         <span className={styles.username}>{username}</span>

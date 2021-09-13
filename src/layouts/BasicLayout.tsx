@@ -59,7 +59,7 @@ const BasicLayout: React.FC<IProps> = (props) => {
 
   return layout === 'horizontal' ? (
     <Layout className={styles.horizontal_layout}>
-      <BasicHeader />
+      <BasicHeader mode={layout} />
       <Content className={styles.horizontal_content}>
         {/* <Breadcrumbs /> */}
         <div className={styles.horizontal_main}>{children}</div>

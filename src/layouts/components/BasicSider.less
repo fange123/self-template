@@ -1,3 +1,29 @@
+.sider {
+  position: fixed;
+  top: 50px;
+  z-index: 1;
+  height: 50px !important;
+  height: calc(100vh - 50px);
+  line-height: 50px !important;
+  background: transparent;
+  :global {
+    .ant-menu-inline .ant-menu-item,
+    .ant-menu-inline .ant-menu-submenu-title {
+      margin: 8px auto;
+      padding: 0 16px 0 20px;
+    }
+    .ant-menu-item .ant-menu-item-icon,
+    .ant-menu-submenu-title .ant-menu-item-icon,
+    .ant-menu-item .anticon,
+    .ant-menu-submenu-title .anticon {
+      margin-right: 8px;
+    }
+    .ant-menu-inline-collapsed {
+      width: 60px;
+    }
+  }
+}
+
 .headerMenu {
   margin-left: 20px;
   border-bottom: none;
@@ -22,7 +48,7 @@
 }
 .activeMenu {
   top: 0 !important;
-  background-color: #fcbdc7 !important;
+  background-color: #fca7b5 !important;
   &:hover {
     background-color: rgb(250, 192, 221) !important;
   }
