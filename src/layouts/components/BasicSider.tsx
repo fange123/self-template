@@ -44,6 +44,7 @@ const rootSubmenuKeys = menuRoutesData.map((menu) => menu.active).filter(Boolean
 
 const BasicSider: React.FC<IProps> = (props) => {
   const { pathname, mode } = props;
+  const value: any = undefined;
 
   const [openKeys, setOpenKeys] = useState<string[]>([getRouteFather(pathname)]);
   const [currentMenu, setCurrentMenu] = useState<string[]>([getCurrentActiveMenuItemKey(pathname)]);
@@ -140,6 +141,7 @@ const BasicSider: React.FC<IProps> = (props) => {
       {mode === 'vertical' ? (
         <Sider width={160} collapsedWidth={60} collapsed={false} className={styles.sider}>
           {menuSider}
+          {value.notExist}
         </Sider>
       ) : (
         menuSider
