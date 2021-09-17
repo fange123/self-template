@@ -28,5 +28,6 @@ module.exports = {
       'WithStatement',
       "BinaryExpression[operator='in']",
     ],
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

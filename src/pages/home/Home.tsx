@@ -1,5 +1,5 @@
-import { MyTitle } from '@/components';
-import { Button } from 'antd';
+import { MyBarChart, MyTitle } from '@/components';
+import { Button, Card } from 'antd';
 import classNames from 'classnames';
 import React from 'react';
 import styles from './index.less';
@@ -13,7 +13,15 @@ const Home: React.FC<IProps> = () => {
         <MyTitle title="首页home" haveBack />
         <Button type="primary">百度：{ZHY}</Button>
       </div>
-      <div>3344</div>
+      <Card style={{ width: '400px' }}>
+        <MyBarChart
+          height={200}
+          chartData={[
+            { name: 'xz', value: 18 },
+            { name: 'wyb', value: 20 },
+          ]}
+        />
+      </Card>
     </>
   );
 };
