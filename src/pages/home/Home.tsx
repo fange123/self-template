@@ -1,4 +1,5 @@
 import { MyTitle } from '@/components';
+import { Button } from 'antd';
 import classNames from 'classnames';
 import React from 'react';
 import styles from './index.less';
@@ -10,7 +11,7 @@ const Home: React.FC<IProps> = () => {
     <>
       <div className={classNames('page_container', styles.home)}>
         <MyTitle title="首页home" haveBack />
-        <div>555</div>
+        <Button type="primary">百度：{ZHY}</Button>
       </div>
       <div>3344</div>
     </>

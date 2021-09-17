@@ -8,6 +8,11 @@ import routes from './routes';
 const { REACT_APP_ENV } = process.env;
 
 export default defineConfig({
+  define: {
+    //在define定义完的内容可以被全局使用
+    // 全局声明 ZHY typings.d.ts 文件中，添加 declare const ZHY: string
+    ZHY: 'http:www.baidu.com',
+  },
   hash: true,
   antd: {},
   dva: {
@@ -26,7 +31,7 @@ export default defineConfig({
     default: 'zh-CN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
-    baseNavigator: true,
+    baseNavigator: false,
   },
   dynamicImport: {
     loading: '@/pages/Loading',

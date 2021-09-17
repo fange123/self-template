@@ -76,6 +76,7 @@ const routes: IBestAFSRoute[] = [
         breadcrumb: '/list',
         active: 'list',
       },
+
       {
         path: '/my',
         name: '个人简介',

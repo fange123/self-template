@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import type { IConnectProps } from '@/models/connect';
 import BasicHeader from './components/BasicHeader';
 import styles from './index.less';
-import { Layout } from 'antd';
+import { Button, Card, Layout } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import BasicSider from './components/BasicSider';
 import Breadcrumbs from './components/Breadcrumbs';
@@ -25,13 +25,16 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
   breadcrumbNameMap: Record<string, MenuDataItem>;
 };
 
+// ?错误边界显示内容
 const ErrorFallback = ({ error, resetErrorBoundary }: any) => {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
+    <Card style={{ width: '800px', margin: 'auto' }}>
+      <h2>我很严肃的告诉你，这指定是哪里出了点毛病👇</h2>
       <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
+      <Button onClick={resetErrorBoundary} type="primary">
+        再试一下
+      </Button>
+    </Card>
   );
 };
 interface IProps
